@@ -24,13 +24,13 @@ class TRP_OpenRouter_Machine_Translator extends TRP_Machine_Translator {
 
         // Add System Prompt if available
         $system_content = "";
-        if ( !empty( $this->settings['chatgpt-system-prompt'] ) ) {
-            $system_content .= $this->settings['chatgpt-system-prompt'] . "\n";
+        if ( !empty( $this->settings['openrouter-system-prompt'] ) ) {
+            $system_content .= $this->settings['openrouter-system-prompt'] . "\n";
         }
 
         // Add Glossary if available
-        if ( !empty( $this->settings['chatgpt-glossary'] ) ) {
-            $system_content .= "Do not translate the following words or phrases: " . $this->settings['chatgpt-glossary'] . ".\n";
+        if ( !empty( $this->settings['openrouter-glossary'] ) ) {
+            $system_content .= "Do not translate the following words or phrases: " . $this->settings['openrouter-glossary'] . ".\n";
         }
 
         if ( !empty( $system_content ) ) {

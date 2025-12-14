@@ -1,19 +1,19 @@
 <?php
 /*
-Plugin Name: TranslatePress - Multilingual
-Plugin URI: https://translatepress.com/
-Description: Experience a better way of translating your WordPress site using a visual front-end translation editor, with full support for WooCommerce and site builders.
-Version: 2.9.20
-Author: Cozmoslabs, Razvan Mocanu, Madalin Ungureanu, Cristophor Hurduban
-Author URI: https://cozmoslabs.com/
-Text Domain: translatepress-multilingual
+Plugin Name: LinguaPress - AI Translation
+Plugin URI: https://github.com/dratzymarcano/translatepress
+Description: AI-powered multilingual translation for WordPress with OpenRouter and ChatGPT support. Visual front-end editor with WooCommerce compatibility.
+Version: 1.0.0
+Author: LinguaPress Team
+Author URI: https://github.com/dratzymarcano
+Text Domain: linguapress
 Domain Path: /languages
 License: GPL2
 WC requires at least: 2.5.0
 WC tested up to: 10.0.2
 
 == Copyright ==
-Copyright 2017 Cozmoslabs (www.cozmoslabs.com)
+Copyright 2025 LinguaPress
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -69,7 +69,7 @@ function trp_run_translatepress_hooks(){
 }
 
 function trp_translatepress_disabled_notice(){
-	echo '<div class="notice notice-error"><p>' . wp_kses( sprintf( __( '<strong>TranslatePress</strong> requires at least PHP version 5.6.20+ to run. It is the <a href="%s">minimum requirement of the latest WordPress version</a>. Please contact your server administrator to update your PHP version.','translatepress-multilingual' ), 'https://wordpress.org/about/requirements/' ), array( 'a' => array( 'href' => array() ), 'strong' => array() ) ) . '</p></div>';
+	echo '<div class="notice notice-error"><p>' . wp_kses( sprintf( __( '<strong>LinguaPress</strong> requires at least PHP version 5.6.20+ to run. It is the <a href="%s">minimum requirement of the latest WordPress version</a>. Please contact your server administrator to update your PHP version.','linguapress' ), 'https://wordpress.org/about/requirements/' ), array( 'a' => array( 'href' => array() ), 'strong' => array() ) ) . '</p></div>';
 }
 
 /**
@@ -85,11 +85,4 @@ function trp_plugin_activation_redirect( $plugin ){
 
 }
 
-//This is for the DEV version
-if( file_exists(plugin_dir_path( __FILE__ ) . '/index-dev.php') ){
-    $trp_instance_for_tp_product_name = TRP_Translate_Press::get_trp_instance();
-    if(!array_key_exists('translatepress-multilingual', $trp_instance_for_tp_product_name->tp_product_name)){
-        // we only include this in instances where we simulate the business/developer version
-        include_once( plugin_dir_path( __FILE__ ) . '/index-dev.php');
-    }
-}
+// LinguaPress - AI Translation Plugin

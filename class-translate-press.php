@@ -69,8 +69,8 @@ class TRP_Translate_Press{
         define( 'TRP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
         define( 'TRP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
         define( 'TRP_PLUGIN_BASE', plugin_basename( __DIR__ . '/index.php' ) );
-        define( 'TRP_PLUGIN_SLUG', 'translatepress' );
-        define( 'TRP_PLUGIN_VERSION', '2.9.20' );
+        define( 'TRP_PLUGIN_SLUG', 'linguapress' );
+        define( 'TRP_PLUGIN_VERSION', '1.0.0' );
 
 	    wp_cache_add_non_persistent_groups(array('trp'));
 
@@ -210,64 +210,9 @@ class TRP_Translate_Press{
      */
     public function set_tp_product_name(){
 
-        // by default, set tp_product_name is not set.
-        // will be overwritten by active plugin names OR based on TRANSLATE_PRESS constant
+        // LinguaPress - Always set to full version
         $this->tp_product_name = array();
-
-        // the names of your product should match the download names in EDD exactly
-        // The order is important because we only match the last one.
-        $trp_all_tp_product_names = array(
-            "translatepress"  => "TranslatePress",
-            "translatepress-multilingual"  => "TranslatePress",
-            "translatepress-business"      => "TranslatePress Business",
-            "translatepress-developer"     => "TranslatePress Developer",
-            "translatepress-personal"      => "TranslatePress Personal",
-        );
-        $active_plugins = get_option('active_plugins');
-        $last_found_product_name = array();
-        foreach ( $trp_all_tp_product_names as $trp_tp_product_folder => $trp_tp_product_name ){
-            foreach( $active_plugins as $active_plugin ){
-                if( strpos( $active_plugin, $trp_tp_product_folder.'/' ) === 0 ){
-                    $last_found_product_name = array($trp_tp_product_folder => $trp_tp_product_name);
-                    break;
-                }
-            }
-        }
-        $this->tp_product_name = $last_found_product_name;
-
-
-        /*
-         * For the dev version simulate the business version
-         *
-         * TRANSLATE_PRESS possible values:
-         * TranslatePress
-         * TranslatePress - Dev
-         * TranslatePress - Personal
-         * TranslatePress - Business
-         * TranslatePress - Developer
-         */
-        if( ( defined('TRANSLATE_PRESS') && TRANSLATE_PRESS === 'TranslatePress - Dev' ) ){
-            $this->tp_product_name = array(); // only one product name
-            $this->tp_product_name["translatepress-business"] = "TranslatePress Business";
-        } elseif (defined('TRANSLATE_PRESS') && TRANSLATE_PRESS === 'TranslatePress' ){
-            $this->tp_product_name = array(); // only one product name
-            $this->tp_product_name["translatepress"] = "TranslatePress";
-        } elseif (defined('TRANSLATE_PRESS') && TRANSLATE_PRESS === 'TranslatePress - Personal' ){
-            $this->tp_product_name = array(); // only one product name
-            $this->tp_product_name["translatepress-personal"] = "TranslatePress Personal";
-        } elseif (defined('TRANSLATE_PRESS') && TRANSLATE_PRESS === 'TranslatePress - Business' ){
-            $this->tp_product_name = array(); // only one product name
-            $this->tp_product_name["translatepress-business"] = "TranslatePress Business";
-        } elseif (defined('TRANSLATE_PRESS') && TRANSLATE_PRESS === 'TranslatePress - Developer' ){
-            $this->tp_product_name = array(); // only one product name
-            $this->tp_product_name["translatepress-developer"] = "TranslatePress Developer";
-        }
-
-        // if tp_product_name not yet set, force set it to TranslatePress business
-        if (!$this->tp_product_name){
-            $this->tp_product_name = array(); // only one product name
-            $this->tp_product_name["translatepress-business"] = "TranslatePress Business";
-        }
+        $this->tp_product_name["linguapress"] = "LinguaPress";
     }
 
     /**

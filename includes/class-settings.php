@@ -135,12 +135,12 @@ class TRP_Settings{
     }
 
     /**
-     * Register Settings subpage for TranslatePress
+     * Register Settings subpage for LinguaPress
      */
     public function register_menu_page(){
-        add_options_page( 'TranslatePress', 'TranslatePress', apply_filters( 'trp_settings_capability', 'manage_options' ), 'translate-press', array( $this, 'settings_page_content' ) );
+        add_options_page( 'LinguaPress', 'LinguaPress', apply_filters( 'trp_settings_capability', 'manage_options' ), 'translate-press', array( $this, 'settings_page_content' ) );
 
-        add_submenu_page( 'TRPHidden', 'TranslatePress Addons', 'TRPHidden', 'manage_options', 'trp_addons_page', array($this, 'addons_page_content') );
+        add_submenu_page( 'TRPHidden', 'LinguaPress Addons', 'TRPHidden', 'manage_options', 'trp_addons_page', array($this, 'addons_page_content') );
     }
 
     /**

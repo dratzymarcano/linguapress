@@ -70,7 +70,7 @@ class TRP_Machine_Translation_Tab {
         $seo_pack_active = class_exists( 'TRP_IN_Seo_Pack');
 
         $settings = array();
-        $machine_translation_keys = array( 'machine-translation', 'translation-engine', 'google-translate-key', 'deepl-api-type', 'deepl-api-key', 'openrouter-api-key', 'chatgpt-api-key', 'chatgpt-system-prompt', 'chatgpt-glossary', 'block-crawlers', 'automatically-translate-slug', 'machine_translation_limit', 'machine_translation_log', 'machine_translation_limit_enabled' );
+        $machine_translation_keys = array( 'machine-translation', 'translation-engine', 'google-translate-key', 'deepl-api-type', 'deepl-api-key', 'openrouter-api-key', 'chatgpt-api-key', 'chatgpt-system-prompt', 'chatgpt-glossary', 'openrouter-system-prompt', 'openrouter-glossary', 'block-crawlers', 'automatically-translate-slug', 'machine_translation_limit', 'machine_translation_log', 'machine_translation_limit_enabled' );
         foreach( $machine_translation_keys as $key ){
             if( isset( $mt_settings[$key] ) ){
                 $settings[$key] = $mt_settings[$key];
@@ -88,6 +88,14 @@ class TRP_Machine_Translation_Tab {
 
         if( !empty( $settings['chatgpt-glossary'] ) ) {
             $settings['chatgpt-glossary'] = sanitize_textarea_field( $settings['chatgpt-glossary'] );
+        }
+
+        if( !empty( $settings['openrouter-system-prompt'] ) ) {
+            $settings['openrouter-system-prompt'] = sanitize_textarea_field( $settings['openrouter-system-prompt'] );
+        }
+
+        if( !empty( $settings['openrouter-glossary'] ) ) {
+            $settings['openrouter-glossary'] = sanitize_textarea_field( $settings['openrouter-glossary'] );
         }
 
         if( !empty( $settings['translation-engine'] ) )
